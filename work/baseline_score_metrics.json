@@ -1,0 +1,27 @@
+{
+  "lane": "Refresh / Content Opportunity Scoring",
+  "dataset_rows": 30000,
+  "selected_rows": 10,
+  "selection_rate": 0.000333,
+  "rule": {
+    "days_since_last_update_min": 180,
+    "impressions_90d_min": 500,
+    "avg_position_min_exclusive": 0,
+    "avg_position_max_inclusive": 20,
+    "ctr_max_exclusive_pct": 0.5,
+    "score": "log1p(impressions_90d) * (0.5 - ctr)",
+    "reason_code": "stale_visible_low_ctr_page"
+  },
+  "score_inputs": [
+    "days_since_last_update",
+    "impressions_90d",
+    "avg_position",
+    "ctr"
+  ],
+  "forbidden_label_or_future_inputs_used": false,
+  "limitations": [
+    "single anonymized snapshot",
+    "aggregate CTR and position hide query-level context",
+    "not causal evidence"
+  ]
+}
